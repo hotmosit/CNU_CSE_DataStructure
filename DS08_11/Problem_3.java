@@ -17,7 +17,7 @@ public class Problem_3 {
         System.out.println("트리의 높이 : "+ bt1.height(bt1));
 
         System.out.println();
-        
+
         bt2.insert(77);
         bt2.insert(44);
         bt2.insert(55);
@@ -110,29 +110,29 @@ class BinaryTree {
             // 노드가 null인 경우 높이가 0이므로 0반환
             return 0;
         } else {
-            int leftS, rightS;
+            int left_height, right_height;
 
             if(bt.left != null) {
                 // 왼쪽에 노드가 존재하는 경우 leftS에 재귀 호출
-                leftS = height(bt.left);
+                left_height = height(bt.left);
             }  else {
                 // 존재하지 않는 경우 -1로 설정한다.
-                leftS = -1;
+                left_height = -1;
             }
             if(bt.right != null){
                 // 오른쪽에 노드가 존재하는 경우 rightS에 재귀 호출
-                rightS = height(bt.right);
+                right_height = height(bt.right);
             }else {
                 // 존재하지 않는 경우 -1로 설정한다.
-                rightS = -1;
+                right_height = -1;
             }
 
-            if(leftS > rightS){
+            if(left_height > right_height){
                 // 왼쪽이 오른쪽보다 큰 경우
-                return 1 + leftS;
+                return 1 + left_height;
             } else {
                 // 오른쪽이 왼쪽보다 큰 경우
-                return 1 + rightS;
+                return 1 + right_height;
             }
         }
     }
