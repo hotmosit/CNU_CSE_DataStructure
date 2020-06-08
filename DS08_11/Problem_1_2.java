@@ -4,28 +4,38 @@ import java.util.*;
 
 public class Problem_1_2{
     public static void main(String args[]){
-            OrderedTree treeA, treeB, treeD;
-            OrderedTree treeC = new OrderedTree("C");
-            OrderedTree treeE = new OrderedTree("E");
-            OrderedTree treeF = new OrderedTree("F");
-            OrderedTree treeG = new OrderedTree("G");
+        OrderedTree tree_D, tree_E, tree_B, tree_A, tree_C;
 
-            List<Object> subtreesOfB = new LinkedList<>();
-            subtreesOfB.add(treeE);
-            subtreesOfB.add(treeF);
-            treeB = new OrderedTree("B", subtreesOfB);
 
-            List<Object> subtreeOfD = new LinkedList<>();
-            subtreeOfD.add(treeG);
-            treeD = new OrderedTree("D", subtreeOfD);
+        OrderedTree tree_H = new OrderedTree(66);
+        OrderedTree tree_G = new OrderedTree(22);
+        OrderedTree tree_F = new OrderedTree(88);
 
-            List<Object> subtreesOfA = new LinkedList<>();
-            subtreesOfA.add(treeB);
-            subtreesOfA.add(treeC);
-            subtreesOfA.add(treeD);
-            treeA = new OrderedTree("A", subtreesOfA);
+        List<OrderedTree> subtreeOf_D = new LinkedList<>();
+        subtreeOf_D.add(tree_G);
+        tree_D = new OrderedTree(33, subtreeOf_D);
 
-            treeA.levelorder();
+        List<OrderedTree> subtreeOf_E = new LinkedList<>();
+        subtreeOf_E.add(tree_H);
+        tree_E = new OrderedTree(55, subtreeOf_E);
+
+        List<OrderedTree> subtreeOf_B = new LinkedList<>();
+        subtreeOf_B.add(tree_D);
+        subtreeOf_B.add(tree_E);
+        tree_B = new OrderedTree(44, subtreeOf_B);
+
+        List<OrderedTree> subtreeOf_C = new LinkedList<>();
+        subtreeOf_C.add(tree_F);
+        tree_C = new OrderedTree(99, subtreeOf_C);
+
+        List<OrderedTree> subtreeOf_A = new LinkedList<>();
+        subtreeOf_A.add(tree_B);
+        subtreeOf_A.add(tree_C);
+        tree_A = new OrderedTree(77, subtreeOf_A);
+
+        tree_A.levelorder();
+
+
 
     }
 }
@@ -52,7 +62,7 @@ class OrderedTree {
             Object object = it.next();
             if(object instanceof OrderedTree){
                 OrderedTree tree = (OrderedTree) object;
-                subtrees.add(tree);
+                subtrees.add(tree); // 연결 리스트에 순서대로 삽입됨
                 size += tree.size();
             }
         }
@@ -60,13 +70,15 @@ class OrderedTree {
 
     public void levelorder(){
         Queue<OrderedTree> queue = new LinkedList<>();
-        queue.add(this);
 
-        while(!queue.isEmpty()){
+        queue.add(this); // 루트 먼저 삽입
+
+        while(!queue.isEmpty()){ // 큐에 아무것도 없을 때 까지 실행한다.
             OrderedTree node = queue.poll();
-            System.out.println(node.root + "");
+            System.out.print(node.root + " ");
 
             for(Object o : node.subtrees){
+                // 노드 (루트)의 자식들을 큐에 삽입한다.
                 queue.add((OrderedTree) o);
             }
         }
