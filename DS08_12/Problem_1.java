@@ -32,6 +32,22 @@ class AVLTree{
         return this;
     }
 
+    public AVLTree remove(int key){
+        if(this == NIL) return null;
+        if(key == this.key) {
+            return null;
+        }
+        return null;
+    }
+
+    public int height(){
+        return height;
+    }
+
+    public AVLTree minimum(AVLTree node){
+
+    }
+
     public int size(){
         if(this == NIL) return 0;
         return 1 + left.size() + right.size() ;
