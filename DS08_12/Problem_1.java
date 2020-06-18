@@ -37,6 +37,7 @@ class AVLTree{
         if(key == this.key) {
             return null;
         }
+        
         return null;
     }
 
