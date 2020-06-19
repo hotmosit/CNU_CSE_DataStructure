@@ -46,7 +46,7 @@ class AVLTree{
     }
 
     public AVLTree minimum(AVLTree node){
-
+        return null;
     }
 
     public int size(){
